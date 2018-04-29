@@ -10,8 +10,8 @@ import org.simplejavamail.email.EmailBuilder;
 import org.simplejavamail.mailer.MailerBuilder;
 
 /*
- * ServerlistMOTD (c) by Strumswell, Philipp Bolte
- * ServerlistMOTD is licensed under a
+ * THB-MailBot (c) by Strumswell, Philipp Bolte
+ * THB-MailBot is licensed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
  * 
  * You should have received a copy of the license along with this work.
