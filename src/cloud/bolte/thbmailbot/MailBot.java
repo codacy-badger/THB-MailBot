@@ -52,7 +52,8 @@ public class MailBot {
 
 		BufferedReader in = new BufferedReader(new InputStreamReader(thb.openStream()));
 
-		String inputLine, result = "";
+		String inputLine;
+		String result = "";
 		while ((inputLine = in.readLine()) != null) {
 			if (inputLine.contains("<h2 style=\"font-size:200%\";>")) {
 				result += inputLine.replace("<h2 style=\"font-size:200%\";>", "").replace("</h2>", "\n")
