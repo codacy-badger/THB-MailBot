@@ -4,6 +4,8 @@
 
 Sends an Email containing cancelled lectures at the Technische Hochschule Brandenburg. Works perfectly in combination with a cronjob to get a daily reminder.
 
+![mail](https://i.imgur.com/ek4JVz6.png)
+
 ### Libraries 
 
  - SimpleJavaMail http://www.simplejavamail.org/
