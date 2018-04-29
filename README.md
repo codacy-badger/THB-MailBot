@@ -2,7 +2,7 @@
 
 ### General 
 
-Sends an Email containing cancelled lecture at THB. Works perfectly in combination with a cronjob to get a daily reminder.
+Sends an Email containing cancelled lectures at the Technische Hochschule Brandenburg. Works perfectly in combination with a cronjob to get a daily reminder.
 
 ### Libraries 
 
