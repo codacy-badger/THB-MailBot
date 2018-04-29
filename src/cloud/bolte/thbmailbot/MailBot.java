@@ -27,46 +27,42 @@ import org.simplejavamail.mailer.MailerBuilder;
 
 public class MailBot {
 	public static void main(String[] args) throws IOException {
-        Email email = EmailBuilder.startingBlank()
-                .from("MailBot", "#####@gmail.com")
-                .to("Philipp", "#####@gmail.com")
-                .withSubject("Ausfälle an der THB")
-                .withPlainText(MailBot.getCancellations())
-                .buildEmail();
+		Email email = EmailBuilder.startingBlank()
+				.from("MailBot", "#####@gmail.com")
+				.to("Philipp", "#####@gmail.com")
+				.withSubject("Ausfälle an der THB")
+				.withPlainText(MailBot.getCancellations())
+				.buildEmail();
 
-        MailerBuilder
-                .withSMTPServer("smtp.gmail.com", 587, "username(without @gmail.com)", "password")
-                .buildMailer()
-                .sendMail(email);
+		MailerBuilder.withSMTPServer("smtp.gmail.com", 587, "username(without @gmail.com)", "password").buildMailer()
+				.sendMail(email);
 
-        System.out.print("[MailBot] Job finished.");
+		System.out.print("[MailBot] Job finished.");
 	}
-	
+
 	/**
-	 * Replacement pattern based on HTML code of the corresponding
-	 * website. Pattern has to change if structure changes!
+	 * Replacement pattern based on HTML code of the corresponding website. Pattern
+	 * has to change if structure changes!
 	 * 
-	 * @return String of all cancellations 
+	 * @return String of all cancellations
 	 * @throws IOException
 	 */
 	public static String getCancellations() throws IOException {
 		URL thb = new URL("http://fbwcms.fh-brandenburg.de/abwesenheit/info.php");
 
-		BufferedReader in = new BufferedReader(
-		new InputStreamReader(thb.openStream()));
+		BufferedReader in = new BufferedReader(new InputStreamReader(thb.openStream()));
 
 		String inputLine, result = "";
 		while ((inputLine = in.readLine()) != null) {
 			if (inputLine.contains("<h2 style=\"font-size:200%\";>")) {
-                result += inputLine
-                		.replace("<h2 style=\"font-size:200%\";>", "")
-                		.replace("</h2>", "\n").replace("</body></html>", "");
-             }
+				result += inputLine.replace("<h2 style=\"font-size:200%\";>", "").replace("</h2>", "\n")
+						.replace("</body></html>", "");
+			}
 		}
 		in.close();
-		
+
 		if (result.equalsIgnoreCase("")) {
-            result = "Keine Ausfälle im System erfasst.\nLink: http://fbwcms.fh-brandenburg.de/abwesenheit/info.php";
+			result = "Keine Ausfälle im System erfasst.\nLink: http://fbwcms.fh-brandenburg.de/abwesenheit/info.php";
 		}
 		return result;
 	}
